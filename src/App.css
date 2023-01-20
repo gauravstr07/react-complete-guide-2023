@@ -36,6 +36,13 @@ h1 {
   padding: 14px;
 }
 
+.data {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  /* padding: 5px; */
+}
+
 .movie {
   border-radius: 5px;
   background-color: #dddddd;
