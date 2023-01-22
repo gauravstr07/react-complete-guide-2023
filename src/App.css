@@ -75,3 +75,21 @@ h1 {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.compa{
+  background-color: lightgray;
+  padding: 5px;
+  margin: 8px;
+}
+
+.compb{
+  background-color: lightcoral;
+  padding: 5px;
+  margin: 8px;
+}
+
+.compc{
+  background-color: lightgreen;
+  padding: 5px;
+  margin: 8px;
+}

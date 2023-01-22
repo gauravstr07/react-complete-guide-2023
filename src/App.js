@@ -1,33 +1,27 @@
+import { createContext } from "react";
+import { useState } from "react";
 import "./App.css";
-import Home from "./components/Home";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Error from "./components/Error";
+import ComA from "./components/ComA";
 import Header from "./components/Header";
-import Insta from "./components/Insta";
-import Mail from "./components/Mail";
-import UserDetails from "./components/UserDetails";
+
+const AppState = createContext();
 
 function App() {
+  const [data, setData] = useState("GauravStr26");
+  const [bio, setBio] = useState({
+    name: "Gaurav Sutar",
+    email: "gauravstr05@gmail.com",
+    age: 23,
+  });
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<Header />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="home/:userId" element={<UserDetails />} />
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/contact" element={<Contact />}>
-            <Route index element={<Insta />} />
-            <Route index exact path="insta" element={<Insta />} />
-            <Route exact path="mail" element={<Mail />} />
-          </Route>
-          <Route exact path="*" element={<Error />} />
-        </Routes>
-      </BrowserRouter>
+      <AppState.Provider value={{data, bio}}>
+        <Header />
+        <ComA />
+      </AppState.Provider>
     </div>
   );
 }
 
 export default App;
+export { AppState };
