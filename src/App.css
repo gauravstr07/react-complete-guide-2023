@@ -76,20 +76,40 @@ h1 {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.compa{
+.compa {
   background-color: lightgray;
   padding: 5px;
   margin: 8px;
 }
 
-.compb{
+.compb {
   background-color: lightcoral;
   padding: 5px;
   margin: 8px;
 }
 
-.compc{
+.compc {
   background-color: lightgreen;
   padding: 5px;
   margin: 8px;
+}
+
+.input-box {
+  padding: 6px 20px;
+  background: #15202b;
+  border: 1px solid rgb(60, 63, 68);
+  border-radius: 4px;
+  font-size: 13px;
+  font-style: italic;
+  color: rgb(247, 248, 248);
+  height: 20px;
+  appearance: none;
+  transition: border 0.15s ease 0s;
+  margin-top: 15px;
+}
+:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: rgb(100, 153, 255);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
