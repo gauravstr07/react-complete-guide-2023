@@ -1,18 +1,29 @@
+import { useMemo } from "react";
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import useFetch from "./components/useFetch";
 
 function App() {
-  const [data] = useFetch(
-    "https://hub.dummyapis.com/employee?noofRecords=20&idStarts=1001"
-  );
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("");
+
+  const expensiveCalculation = (num) => {
+    console.log("Calculation");
+    for (let i = 0; i < 50; i++) {}
+    return num;
+  };
+
+  const calculation = useMemo(() => expensiveCalculation(count), [count]);
 
   return (
     <div className="App">
       <Header />
-      {data.map((element, index) => {
-        return <p key={index}>{element.firstName}</p>;
-      })}
+      <button className="btn" onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+      <h4>Count: {calculation}</h4>
+      <input className="input-box" onChange={(e) => setName(e.target.value)} />
+      <h4>Name: {name}</h4>
     </div>
   );
 }
