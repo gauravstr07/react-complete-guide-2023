@@ -1,29 +1,28 @@
-import { useMemo } from "react";
+import { useCallback } from "react";
 import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
+import Todos from "./components/Todos";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [name, setName] = useState("");
+  const [todos, setTodos] = useState([]);
 
-  const expensiveCalculation = (num) => {
-    console.log("Calculation");
-    for (let i = 0; i < 50; i++) {}
-    return num;
-  };
+  const increment = (c) => setCount((c) => c + 1);
 
-  const calculation = useMemo(() => expensiveCalculation(count), [count]);
+  const addTodo = useCallback(() => {
+    setTodos((t) => [...t, `New Todo ${t.length}`]);
+  }, [todos]);
 
   return (
     <div className="App">
       <Header />
-      <button className="btn" onClick={() => setCount(count + 1)}>
-        Increment
+      Count: {count}
+      <button className="btn" onClick={increment}>
+        +
       </button>
-      <h4>Count: {calculation}</h4>
-      <input className="input-box" onChange={(e) => setName(e.target.value)} />
-      <h4>Name: {name}</h4>
+      <hr />
+      <Todos todos={todos} addTodo={addTodo} />
     </div>
   );
 }
