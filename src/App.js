@@ -1,41 +1,32 @@
-// import { useEffect } from "react";
-import { useRef } from "react";
-import { useState } from "react";
+import { useReducer } from "react";
 import "./App.css";
-
 import Header from "./components/Header";
 
+const reducer = (state, action) => {
+  if (action.type === "INC") {
+    return state + 1;
+  } else if (action.type === "DEC") {
+    return state - 1;
+  } else if (action.type === "MUL") {
+    return state * 2;
+  }
+  return state;
+};
+
 function App() {
-  const [input, setInput] = useState("");
-  // const counter = useRef(0);
-  let inputField = useRef("");
-
-  // useEffect(() => {
-  //   counter.current = counter.current + 1;
-  //   prevState.current = input;
-  // }, [input]);
-
-  const formHandler = (e) => {
-    setInput(e.target.value);
-  };
-
-  const clickHandler = () => {
-    inputField.current.value = "Gaurav Sutar🥰";
-  };
-
+  const [state, dispatch] = useReducer(reducer, 0);
   return (
     <div className="App">
       <Header />
-      <input
-        ref={inputField}
-        className="input-box"
-        value={input}
-        onChange={formHandler}
-      />
-      {/* <h4>Application has been renderd {counter.current} times</h4> */}
-      {/* <h4>Your previous state was {prevState.current}</h4> */}
-      <button className="btn" onClick={clickHandler}>
-        Focus on input
+      <h1>{state}</h1>
+      <button onClick={() => dispatch({ type: "INC" })} className="btn">
+        Increment
+      </button>
+      <button onClick={() => ({ type: "DEC" })} className="btn">
+        Decrement
+      </button>
+      <button onClick={() => dispatch({ type: "MUL" })} className="btn">
+        Multiplication
       </button>
     </div>
   );
