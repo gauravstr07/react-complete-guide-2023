@@ -32,12 +32,12 @@ h1 {
   font-style: italic;
 }
 
-.main {
+/* .main {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 14px;
-}
+} */
 
 .data {
   display: flex;
@@ -113,4 +113,12 @@ h1 {
   box-shadow: none;
   border-color: rgb(100, 153, 255);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.main {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
